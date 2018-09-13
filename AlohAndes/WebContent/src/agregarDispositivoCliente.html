@@ -1,0 +1,117 @@
+
+
+<form name="dispForm">
+
+  <div class="form-group">
+    <div class="container">
+      <div class="row">
+        <label class="col-sm-12" for="tipoId"><strong>*</strong>Seleccionar un tipo</label>
+      </div>
+      <div class="row">
+        <select class="form-control col-sm-12" id="tipoId" required ng-model="data.tipo.id">
+          <option value=""> 
+           Seleccione un tipo
+         </option>              
+         <option ng-repeat="tipo in tipos" value="{{tipo.id}}"> 
+          {{tipo.nombre}} 
+        </option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="nombre"><strong>*</strong> Descripción</label>
+  <input type="text" class="form-control" id="nombre" placeholder="Ingrese una breve descripción" ng-model="data.descripcion" required>
+</div>
+<div class="form-group">
+  <div class="container">
+    <div class="row">
+      <label class="col-sm-3" for="oct1"><strong>*</strong> Mac  1</label>
+      <label class="col-sm-3" for="oct2"><strong>*</strong> Mac  2</label>
+      <label class="col-sm-3" for="oct3"><strong>*</strong> Mac  3</label>
+      <label class="col-sm-3" for="oct4"><strong>*</strong> Mac  4</label>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="container" style="padding: 0">
+          <div class="row" style="padding: 0">
+            <div class="col-sm-6" style="padding: 0"> 
+             <input type="text" style="text-transform: uppercase;" class="form-control col" id="mac11" maxlength="1" placeholder="F" required ng-model="data.mac1_1">
+           </div>
+           <div class="col-sm-6" style="padding: 0">
+            <input type="text" style="text-transform: uppercase;" class="form-control col" id="mac12" maxlength="1" placeholder="F" required ng-model="data.mac1_2">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-1">
+      <h3>:</h3>
+    </div>
+    <div class="col-sm-2">
+      <div class="container" style="padding: 0">
+        <div class="row" style="padding: 0">
+          <div class="col-sm-6" style="padding: 0"> 
+            <input type="text" style="text-transform: uppercase;" class="form-control col" id="mac21" maxlength="1" placeholder="A" required ng-model="data.mac2_1"> 
+          </div>
+          <div class="col-sm-6" style="padding: 0">  
+            <input type="text" style="text-transform: uppercase;" class="form-control col" id="mac22" maxlength="1" placeholder="2" required ng-model="data.mac2_2">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-1">
+      <h3>:</h3>
+    </div>
+    <div class="col-sm-2">
+      <div class="container" style="padding: 0">
+        <div class="row" style="padding: 0">
+          <div class="col-sm-6" style="padding: 0"> 
+            <input type="text" style="text-transform: uppercase;" class="form-control col" id="mac31" maxlength="1" placeholder="1" required ng-model="data.mac3_1"> 
+          </div>
+          <div class="col-sm-6" style="padding: 0"> 
+            <input type="text" style="text-transform: uppercase;" class="form-control col" id="mac32" maxlength="1" placeholder="2" required ng-model="data.mac3_2">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-1">
+      <h3>:</h3>
+    </div>
+    <div class="col-sm-2">
+      <div class="container" style="padding: 0">
+        <div class="row" style="padding: 0">
+          <div class="col-sm-6" style="padding: 0">
+            <input type="text" style="text-transform: uppercase;" class="form-control col" id="mac41" maxlength="1" placeholder="6" required ng-model="data.mac4_1">  
+          </div>
+          <div class="col-sm-6" style="padding: 0">
+            <input type="text" style="text-transform: uppercase;" class="form-control col" id="mac42" maxlength="1" placeholder="D" required ng-model="data.mac4_2">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-1">
+      <h3></h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12" ng-if="!validar(data.mac1_1, 'mac11') || !validar(data.mac1_2, 'mac12') || !validar(data.mac2_1, 'mac21') || !validar(data.mac2_2, 'mac22') || !validar(data.mac3_1, 'mac31') || !validar(data.mac3_2, 'mac32') || !validar(data.mac4_1, 'mac41') || !validar(data.mac4_2, 'mac42')">
+    <div class="alert alert-warning">
+      <p>Sólo valores hexadecimales (A...F - 1...9)</p>
+    </div> 
+  </div>
+  </div>
+</div>
+</div>
+<div class="form-group row">
+  <div class="form-group col-sm-12" ng-if="!dispForm.$valid">
+    <div class="alert alert-warning">
+      <p>Ingrese todos los datos con un <strong>*</strong></p>
+    </div> 
+  </div> 
+</div> 
+<div class="form-group">
+  <button type="submit" ng-show="dispForm.$valid && validar(data.mac1_1, 'mac11') && validar(data.mac1_2, 'mac12') && validar(data.mac2_1, 'mac21') && validar(data.mac2_2, 'mac22') && validar(data.mac3_1, 'mac31') && validar(data.mac3_2, 'mac32') && validar(data.mac4_1, 'mac41') && validar(data.mac4_2, 'mac42')" class="btn btn-primary" ng-click="agregarDispositivoClienteFuncion()" data-dismiss="modal" aria-describedby="ayuda">Confirmar registro</button>
+  <small id="ayuda" class="form-text text-muted">Por favor, verifique cada campo dos veces antes de confirmar el registro. </small>
+</div>
+</form>

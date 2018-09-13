@@ -1,0 +1,153 @@
+<div class="container bootstrap snippet">
+  <div class="row">
+    <div class="col-sm-6">
+      <h1>{{cliente.nombre}}</h1>
+    </div>
+    <div class="col-sm-4">
+      <h3>Estado: </h3>
+    </div>
+    <div class="col-sm-2"><img title="imagen-estado" class="img-responsive" src="resources/img/{{cliente.estado}}.png" width="48px" height="48px"></div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <!--left col-->
+      <div class="text-center">
+        <img src="https://picsum.photos/200" class="avatar img-circle img-thumbnail" alt="avatar">
+      </div>
+    </hr><br>
+    <ul class="list-group">
+      <li class="list-group-item text-right"><span class="pull-left"><strong>Cédula</strong></span><br> {{cliente.cedula}}</li>
+      <li class="list-group-item text-right"><span class="pull-left"><strong>Dirección</strong></span><br> {{cliente.direccion}}</li>
+      <li class="list-group-item text-right"><span class="pull-left"><strong>E-mail</strong></span><br> {{cliente.email}}</li>
+      <li class="list-group-item text-right"><span class="pull-left"><strong>Teléfono</strong></span><br> {{cliente.telefono}}</li>
+      <li class="list-group-item text-right"><span class="pull-left"><strong>Nodo</strong></span><br> {{cliente.nombreNodo}}</li>
+      <li class="list-group-item text-right"><span class="pull-left"><strong>Plan</strong></span><br> {{cliente.plan.nombre}}</li>
+    </ul>
+    <br>
+    <div class="card">
+      <div class="card-header">Plan</div>
+      <div class="card-body">
+        <h5 class="card-title">Descripción</h5>
+        <p class="card-text">{{cliente.plan.descripcion}}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item text-left"><span class="pull-left"><strong>id</strong></span><br> {{cliente.plan.id}}</li>
+        <li class="list-group-item text-left"><span class="pull-left"><strong>Nombre</strong></span><br> {{cliente.plan.nombre}}</li>
+        <li class="list-group-item text-left"><span class="pull-left"><strong>Velocidad de internet</strong></span><br> {{cliente.plan.velocidadInternet}}</li>
+        <li class="list-group-item text-left"><span class="pull-left"><strong>Cantidad de canales</strong></span><br> {{cliente.plan.cantidadCanales}}</li>
+      </ul>
+    </div>
+  </div>
+  <!--/col-3-->
+  <div class="col-sm-9">
+    <ul class="nav nav-tabs">
+      <li class="active nav-item"><a data-toggle="tab" data-target="#dispositivos" class="nav-link">Dispositivos</a>
+      </li>
+      <li class="nav-item"><a data-toggle="tab" data-target="#ordenes" class="nav-link">Ordenes de Instalación</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="dispositivos">
+        <br>
+        <button type="button" class="btn btn-primary" ui-sref="agregarDispositivoCliente({clienteId: cliente.cedula})" data-toggle="modal" data-target="#agregarDispositivoModal">
+          Agregar Dispositivo
+        </button>
+        <br>
+        <hr>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>Tipo</th>
+              <th>MAC</th>
+              <th>Descripción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="dispositivo in cliente.dispositivos">
+              <td id="{{$index}}-id">
+                <p style="padding: 10px 0;">{{dispositivo.id}}</p>
+              </a>
+            </td>
+            <td id="{{$index}}-tipo">
+              <p style="padding: 10px 0;">{{dispositivo.tipo.nombre}}</p>
+            </a>
+          </td>
+          <td id="{{$index}}-mac">
+            <p style="padding: 10px 0;"> {{dispositivo.mac1_1}}{{dispositivo.mac1_2}}:{{dispositivo.mac2_1}}{{dispositivo.mac2_2}}:{{dispositivo.mac3_1}}{{dispositivo.mac3_2}}:{{dispositivo.mac4_1}}{{dispositivo.mac4_2}} </p>
+          </td>
+          <td id="{{$index}}-descripcion">
+            <p style="padding: 10px 0;"> {{dispositivo.descripcion}} </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!--fin dispositivos div-->
+  <div class="tab-pane" id="ordenes">
+    <br>
+    <button type="button" class="btn btn-primary" ui-sref="agregarOrdenCliente({clienteId: cliente.cedula})" data-toggle="modal" data-target="#agregarOrdenModal">
+      Agregar Orden
+    </button>
+    <br>
+    <hr>
+    <div class="card" ng-repeat="orden in cliente.ordenes">
+      <div class="card-header">Orden No. <strong>{{orden.id}}</strong></div>
+      <div class="card-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item text-left"><span class="pull-left"><strong>id</strong></span><br> {{orden.id}}</li>
+                <li class="list-group-item text-left"><span class="pull-left"><strong>Fecha</strong></span><br> {{orden.fecha}}</li>
+                <li class="list-group-item text-left"><span class="pull-left"><strong>Tipo</strong></span><br> {{orden.tipo}}</li>
+                <li class="list-group-item text-left">
+                  <button type="button" class="btn btn-primary" ui-sref="verFotosOrden({idOrden: orden.id, clienteRef: cliente})" data-toggle="modal" data-target="#fotosOrdenModal"> Ver fotos orden </button>
+                </li>
+              </ul>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-header">Técnicos asignados</div>
+                <div class="card-body" style="padding: 0;">
+                  <table class="table table-striped mb-0">
+                    <thead>
+                      <tr>
+                        <th>id</th>
+                        <th>Cédula</th>
+                        <th>Nombre</th>
+                        <th>Usuario FTP</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="tecnico in orden.tecnicos">
+                        <td id="{{$index}}-id">
+                          <p style="padding: 10px 0;">{{tecnico.id}}</p>
+                        </a>
+                      </td>
+                      <td id="{{$index}}-cedula">
+                        <p style="padding: 10px 0;">{{tecnico.cedula}}</p>
+                      </a>
+                    </td>
+                    <td id="{{$index}}-nombre">
+                      <p style="padding: 10px 0;"> {{tecnico.nombre}}</p>
+                    </td>
+                    <td id="{{$index}}-usuarioFTP">
+                      <p style="padding: 10px 0;"> {{tecnico.usuarioFTP.usuario}}</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<!--/col-9-->
+</div>
+<!--/row-->

@@ -1,0 +1,60 @@
+
+    <form>
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre completo del cliente" required ng-model="data.nombre">
+      </div>
+
+      <div class="form-group">
+        <label for="cedula">Cédula</label>
+        <input type="number" class="form-control" id="cedula" placeholder="Ingrese la cédula del cliente" required ng-model="data.cedula">
+      </div>
+
+      <div class="form-group">
+        <label for="direccion">Dirección</label>
+        <input type="text" class="form-control" id="direccion" placeholder="Ingrese la dirección donde se instalará el servicio" required ng-model="data.direccion">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input type="email" class="form-control" id="email" placeholder="Ingrese un correo electrónico del cliente, si tiene" ng-model="data.email">
+      </div>   
+
+      <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input type="number" class="form-control" id="telefono" placeholder="Ingrese un teléfono de contacto del cliente" required ng-model="data.telefono">
+      </div>         
+
+      <hr/>
+
+      <div class="form-group">
+        <div class="container">
+          <div class="row">
+            <label class="col-sm-6" for="nodoId">Seleccionar nodo</label>
+            <label class="col-sm-6" for="idPlan">Seleccionar plan</label>
+          </div>
+          <div class="row">
+            <select class="form-control col-sm-6" id="nodoId" required ng-model="nodoX.idNodo">
+              <option value=""> 
+                Seleccione un nodo
+              </option>              
+              <option ng-repeat="nodo in nodos" value="{{nodo.id}}"> 
+                {{nodo.nombre}} 
+              </option>
+            </select>
+            <select class="form-control col-sm-6" id="planId" required ng-model="data.plan.id">
+              <option value=""> 
+                Seleccione un plan
+              </option>              
+              <option ng-repeat="plan in planes" value="{{plan.id}}"> 
+                {{plan.nombre}} 
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" ng-click="crearCliente()" data-dismiss="modal" aria-describedby="ayuda">Confirmar registro</button>
+        <small id="ayuda" class="form-text text-muted">Por favor, verifique cada campo dos veces antes de confirmar el registro. </small>
+      </div>
+    </form>

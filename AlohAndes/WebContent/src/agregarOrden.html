@@ -1,0 +1,42 @@
+
+<form>
+  <div class="form-group">
+    <label for="idOrden">ID ORDEN</label>
+    <input type="number" class="form-control" id="idOrden" placeholder="Ingrese el id de la orden" required ng-model="data.id">
+  </div>
+  <div class="form-group">
+    <div class="container">
+      <div class="row">
+        <label class="col-sm-6" for="tipoId">Seleccionar tipo</label>
+        <label class="col-sm-6" for="idPlan">Seleccionar plan</label>
+      </div>
+      <div class="row">
+        <select class="form-control col-sm-6" id="tipoId" required ng-model="data.tipo">
+          <option value=""> 
+            Seleccione un tipo
+          </option>              
+          <option ng-repeat="tipo in tipos" value="{{tipo.id}}"> 
+            {{tipo.nombre}} 
+          </option>
+        </select>
+        <select class="form-control col-sm-6" id="planId" required ng-model="data.plan.id">
+          <option value=""> 
+            Seleccione un plan
+          </option>              
+          <option ng-repeat="plan in planes" value="{{plan.id}}"> 
+            {{plan.nombre}} 
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-6" for="fecha">Fecha</label>
+    <input type="date" class="form-control" id="fecha" required ng-model="data.fecha">
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary" ng-click="crearOrden()" data-dismiss="modal" aria-describedby="ayuda">Confirmar asignación</button>
+    <small id="ayuda" class="form-text text-muted">Por favor, verifique cada campo dos veces antes de confirmar el registro. </small>
+  </div>
+</form>

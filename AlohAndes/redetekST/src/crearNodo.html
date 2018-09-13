@@ -1,0 +1,28 @@
+
+
+    <form>
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre identificativo del nodo" required ng-model="data.nombre">
+      </div>
+      <div class="form-group">
+        <div class="container">
+          <div class="row">
+            <label class="col-sm-3" for="oct1">octeto 1</label>
+            <label class="col-sm-3" for="oct2">octeto 2</label>
+            <label class="col-sm-3" for="oct3">octeto 3</label>
+            <label class="col-sm-3" for="oct4">octeto 4</label>
+          </div>
+          <div class="row">
+            <input type="number" class="form-control col" id="oct1" placeholder="xx" required ng-model="data.octeto1">
+            <input type="number" class="form-control col" id="oct2" placeholder="xx" required ng-model="data.octeto2">
+            <input type="number" class="form-control col" id="oct3" placeholder="xx" required ng-model="data.octeto3">
+            <input type="number" class="form-control col" id="oct4" placeholder="xx" required readonly>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" ng-click="crearNodo()" data-dismiss="modal" aria-describedby="ayuda">Confirmar registro</button>
+        <small id="ayuda" class="form-text text-muted">Por favor, verifique cada campo dos veces antes de confirmar el registro. </small>
+      </div>
+    </form>

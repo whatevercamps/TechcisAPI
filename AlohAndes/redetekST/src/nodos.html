@@ -1,0 +1,18 @@
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Nombre</th>
+			<th>IP</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="nodo in nodos">
+
+			<td id="{{$index}}-id">{{nodo.id}}</td>
+			<td id="{{$index}}-nombre"><p> {{nodo.nombre}} </p></td>
+			<td id="{{$index}}-ip"><p> {{nodo.octeto1}}.{{nodo.octeto2}}.{{nodo.octeto3}}.XX  </p></td>
+		</tr>
+	</tbody>
+</table>

@@ -1,0 +1,42 @@
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Estado</th>
+			<th>Cedula</th>
+			<th>Nombre</th>
+			<th>Direccion</th>
+			<th>Email</th>
+			<th>Plan</th>
+			<th>Nodo</th>			
+			<th>IP</th>
+			<th>Teléfono</th>
+			<th>Modificar</th>
+			<th>Eliminar</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="cliente in clientes">
+			<td class="{{cliente.estado}}" id="{{$index}}-estado"><p style="padding: 10px 0;">{{cliente.estado}}</p></td>
+			<td id="{{$index}}-id"><p style="padding: 10px 0;">{{cliente.cedula}}</p></td>
+			<td id="{{$index}}-nombre"><p style="padding: 10px 0;"> {{cliente.nombre}} </p></td>
+			<td id="{{$index}}-direccion"><p style="padding: 10px 0;"> {{cliente.direccion}} </p></td>
+			<td id="{{$index}}-email"><p style="padding: 10px 0;"> {{cliente.email}} </p></td>
+			<td id="{{$index}}-plan"><p style="padding: 10px 0;"> {{cliente.plan.nombre}} </p></td>
+			<td id="{{$index}}-nodo"><p style="padding: 10px 0;"> {{cliente.nombreNodo}} </p></td>
+			<td id="{{$index}}-ip"><p style="padding: 10px 0;"> 
+			{{cliente.octeto1}}.{{cliente.octeto2}}.{{cliente.octeto3}}.{{cliente.octeto4}} 
+		</p></td>
+			<td id="{{$index}}-telefono"><p style="padding: 10px 0;"> {{cliente.telefono}} </p></td>
+			<td id="{{$index}}-modificar">
+				<button type="button" class="btn btn-primary" ui-sref="modificarCliente({idCliente: cliente.cedula})" data-toggle="modal" data-target="#modificarClienteModal">
+					Modificar
+				</button>
+			</td>
+			<td id="{{$index}}-eliminar">
+				<button type="button" class="btn btn-warning" ui-sref="borrarCliente({idCliente: cliente.cedula})" data-toggle="modal" data-target="#borrarClienteModal">Eliminar</button>
+			</td>			
+		</tr>
+	</tbody>
+</table>

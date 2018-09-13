@@ -1,0 +1,67 @@
+
+<form>
+  <hr/>
+  <div class="form-group">
+    <h3>Estado</h3> 
+    <label class="switch">
+      <input id="estado" name="estado" type="checkbox" ng-model="cliente.estado" ng-true-value="Activo" ng-false-value="Inactivo">>
+      <span class="slider"></span>
+    </label>
+  </div>   
+
+  <hr/>
+
+
+  <div class="form-group">
+    <label for="nombre">Nombre y Apellido</label>
+    <input type="text" class="form-control" id="nombre" value="cliente.nombre" required ng-model="cliente.nombre">
+  </div>
+
+  <div class="form-group">
+    <label for="cedula">Cédula</label>
+    <input type="number" class="form-control" id="cedula" value="cliente.cedula" required ng-model="cliente.cedula">
+  </div>
+
+  <div class="form-group">
+    <label for="direccion">Dirección</label>
+    <input type="text" class="form-control" id="direccion" value="cliente.direccion" required ng-model="cliente.direccion">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Correo electrónico</label>
+    <input type="email" class="form-control" id="email" value="cliente.email" ng-model="cliente.email">
+  </div>   
+
+  <div class="form-group">
+    <label for="telefono">Teléfono</label>
+    <input type="number" class="form-control" id="telefono" value="cliente.telefono" required ng-model="cliente.telefono">
+  </div>         
+
+  <div class="form-group">
+    <div class="container">
+      <div class="row">
+        <label class="col-sm-6" for="nodoId">Seleccionar nodo</label>
+        <label class="col-sm-6" for="idPlan">Seleccionar plan</label>
+      </div>
+      <div class="row">
+        <select class="form-control col-sm-6" id="nodoId" required ng-model="nodoX.id">
+          <option value=""> 
+            {{nodoX.nombre}}
+          </option>             
+          <option ng-repeat="nodo in nodos" value="{{nodo.id}}" > 
+            {{nodo.nombre}} 
+          </option>
+        </select>
+        <select class="form-control col-sm-6" id="planId" required ng-model="cliente.plan.id">          
+          <option ng-repeat="plan in planes" value="{{plan.id}}"> 
+            {{plan.nombre}} 
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-primary" ng-click="modificarCliente()" data-dismiss="modal" aria-describedby="ayuda">Confirmar registro</button>
+    <small id="ayuda" class="form-text text-muted">Por favor, verifique cada campo dos veces antes de confirmar el registro. </small>
+  </div>
+</form>
